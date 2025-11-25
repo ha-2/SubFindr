@@ -1,87 +1,88 @@
 # SubFindr – Open Source Subdomain Enumeration Tool
 
-SubFindr is an open-source web tool for discovering subdomains of any target domain using multiple OSINT, DNS, and CT-based enumeration techniques.  
-It is designed for learning, research, and defensive security testing — **strictly not for commercial resale or malicious use**.
+SubFindr is an open-source subdomain enumeration tool that helps discover subdomains of any given domain using multiple enumeration techniques.
 
-> 🔒 **Note:** Only scan domains you own or are authorized to test.
+## Features
 
----
-
-# 🌟 Features
-
-- 🔍 Multi-source subdomain discovery  
-- ⚡ **Basic & Aggressive scan modes**  
-- 📜 Certificate Transparency (CT) log scanning  
-- 🧩 DNS brute-force using a wordlist  
-- 🧬 DNS record enumeration (MX, NS, TXT, SOA)  
-- 📄 JavaScript file parsing for hidden domains  
-- 🕰 Wayback Machine historical URL extraction  
-- 🛰 Search engine scraping (DuckDuckGo)  
-- 🛰 Passive DNS via public OSINT sites (Aggressive mode)  
-- ❤️ Alive check (HTTP/HTTPS) with status codes  
-- 📑 Professional **PDF report generation** with watermark & creator link  
-- 🖥 Clean TailwindCSS UI  
-- 🔰 Simple FastAPI backend  
-
----
-
-# 🧭 Scan Modes
-
-## 🔹 Basic Mode (recommended for quick scans)
-
-Uses fast essential OSINT sources:
-
-- DNS bruteforce (resolved subdomains only)
-- CRT.sh (Certificate Transparency)
-- DNS records
+- Multi-source subdomain discovery
+- Basic and Aggressive scan modes
+- Certificate Transparency (CT) logs scanning
+- DNS brute-force enumeration
+- DNS record extraction (MX, NS, TXT, SOA)
 - JavaScript file parsing
+- Wayback Machine passive DNS
+- Search engine scraping
+- Alive subdomain checking
+- PDF report generation
+- Clean web interface
+
+## Scan Modes
+
+### Basic Mode
+Fast scanning using essential OSINT sources:
+- DNS bruteforce
+- crt.sh CT logs
+- DNS records
+- JS file analysis
 - DuckDuckGo search
 - Wayback Machine
-- AlienVault OTX (if available)
-- CertAPI (optional external CT source)
 
----
-
-## 🔸 Aggressive Mode (deeper enumeration)
-
-Includes all Basic mode sources **plus**:
-
+### Aggressive Mode
+Comprehensive scanning using additional public OSINT services:
+- All basic mode sources
 - Anubis (jldc.me)
 - Sonar Omnisint
-- RapidDNS
 - HackerTarget hostsearch
-- Additional passive DNS APIs
+- RapidDNS HTML parsing
+- CertAPI (if configured)
 
-Aggressive mode is slower and may hit rate limits, but finds more subdomains.
+## Installation
 
----
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ha-2/SubFindr.git
+   cd SubFindr
+   ```
 
-# 🛠 Tech Stack
+2. Create a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
-- **Backend:** FastAPI (Python)
-- **Async:** aiohttp, asyncio
-- **DNS:** aiodns, pycares
-- **Frontend:** HTML, TailwindCSS, Vanilla JS
-- **Reports:** jsPDF + jsPDF-AutoTable
-- **Server:** Uvicorn
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
----
+## Running the Application
 
-# 📁 Project Structure
-
+Start the server:
 ```bash
-SubFindr/
-├── app/
-│   ├── main.py                 # FastAPI application
-│   ├── schemas.py              # Pydantic models
-│   └── services/
-│       └── subdomain_enum.py   # Core enumeration logic
-├── static/
-│   ├── index.html              # UI
-│   └── app.js                  # Frontend logic (scan + PDF)
-├── wordlists/
-│   └── subdomains.txt          # Wordlist for bruteforce
-├── requirements.txt
-├── README.md
-├── LICENSE
-└── .gitignore
+uvicorn app.main:app --reload
+```
+
+The application will be available at `http://localhost:8000`
+
+## Screenshots
+
+![SubFindr Interface](screenshots/interface.png)
+*Main scanning interface*
+
+![SubFindr Results](screenshots/results.png)
+*Scan results with alive status*
+
+![SubFindr PDF Report](screenshots/report.png)
+*Generated PDF report sample*
+
+## License
+
+SubFindr is open-source under the Creative Commons Attribution-NonCommercial 4.0 License (CC BY-NC 4.0).  
+Commercial use, resale, or monetization of this software is strictly prohibited.
+
+## Creator
+
+[https://github.com/ha-2](https://github.com/ha-2)
+
+> This tool is intended for security research and education.  
+> Only scan domains you own or are authorized to test.
