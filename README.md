@@ -1,6 +1,11 @@
 # SubFindr – Open Source Subdomain Enumeration Tool
 
+
 SubFindr is an open-source subdomain enumeration tool that helps discover subdomains of any given domain using multiple enumeration techniques.
+## Screenshots
+
+### SubFindr Interface  
+![Interface](screenshot/Screenshot.png)
 
 ## Features
 
@@ -36,6 +41,9 @@ Comprehensive scanning using additional public OSINT services:
 - RapidDNS HTML parsing
 - CertAPI (if configured)
 
+![SubFindr PDF Report](screenshot/result.png)
+*Generated PDF report sample*
+
 ## Installation
 
 1. Clone the repository:
@@ -64,17 +72,6 @@ uvicorn app.main:app --reload
 
 The application will be available at `http://localhost:8000`
 
-## Screenshots
-
-![SubFindr Interface](screenshots/interface.png)
-*Main scanning interface*
-
-![SubFindr Results](screenshots/results.png)
-*Scan results with alive status*
-
-![SubFindr PDF Report](screenshots/report.png)
-*Generated PDF report sample*
-
 ## License
 
 SubFindr is open-source under the Creative Commons Attribution-NonCommercial 4.0 License (CC BY-NC 4.0).  
@@ -85,4 +82,5 @@ Commercial use, resale, or monetization of this software is strictly prohibited.
 [https://github.com/ha-2](https://github.com/ha-2)
 
 > This tool is intended for security research and education.  
+
 > Only scan domains you own or are authorized to test.
